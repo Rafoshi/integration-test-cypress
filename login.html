@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" class="form-control" id="loginEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Senha</label>
+                <input type="password" class="form-control" id="loginPassword" required>
+            </div>
+            <button type="submit" class="btn btn-success btn-block">Entrar</button>
+            <div class="alert alert-danger mt-3 d-none" id="loginError">Usuário ou senha inválidos!</div>
+            <div class="d-none" id="btnCadastrar">
+                <a id="btnCadastrar" href="cadastro.html">Criar cadastro</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const btnCadastro = document.getElementById('btnCadastrar');
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(u => u.email === email && u.password === password);
+
+            const loginError = document.getElementById('loginError');
+            if (user) {
+                alert(`Bem-vindo, ${user.name}!`);
+                loginError.classList.add('d-none'); 
+                window.location.href = 'listar.html'; 
+            } else {
+                loginError.classList.remove('d-none'); 
+                btnCadastro.classList.remove('d-none');
+            }
+        });
+    </script>
+</body>
+</html>

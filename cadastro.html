@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Cadastro de Usuário</h2>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="registerName">Nome</label>
+                <input type="text" class="form-control" id="registerName" required>
+            </div>
+            <div class="form-group">
+                <label for="registerEmail">Email</label>
+                <input type="email" class="form-control" id="registerEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="registerPassword">Senha</label>
+                <input type="password" class="form-control" id="registerPassword" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            users.push({ name, email, password });
+            localStorage.setItem('users', JSON.stringify(users));
+
+            alert('Usuário cadastrado com sucesso!');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>
