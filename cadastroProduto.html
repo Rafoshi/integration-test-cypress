@@ -15,8 +15,8 @@
                 <input type="text" class="form-control" id="registerProdutoName" required>
             </div>
             <div class="form-group">
-                <label for="registerEmail">Preço</label>
-                <input type="number" class="form-control" id="registerEmail" required>
+                <label for="registerPreco">Preço</label>
+                <input type="number" class="form-control" id="registerPreco" required>
             </div>
             <button type="submit" class="btn btn-primary btn-block">Cadastrar Produto</button>
         </form>
@@ -26,7 +26,7 @@
         document.getElementById('registerForm').addEventListener('submit', function (e) {
             e.preventDefault();
             const productName = document.getElementById('registerProdutoName').value;
-            const preco = document.getElementById('registerEmail').value;
+            const preco = document.getElementById('registerPreco').value;
 
             const produtos = JSON.parse(localStorage.getItem('produtos')) || [];
             produtos.push({ productName, preco});

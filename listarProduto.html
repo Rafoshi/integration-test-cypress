@@ -21,7 +21,7 @@
             produtos.forEach(product => {
                 const listItem = document.createElement('li');
                 listItem.classList.add('list-group-item');
-                listItem.textContent = `Nome: ${product.productName} | Email: ${product.preco}`;
+                listItem.textContent = `Nome: ${product.productName} | Preço: ${product.preco}`;
                 productList.appendChild(listItem);
             });
         }
