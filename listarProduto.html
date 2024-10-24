@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuários</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Lista de Usuários</h2>
+        <ul class="list-group" id="productList"></ul>
+    </div>
+
+    <script>
+        function loadProducts() {
+            const produtos = JSON.parse(localStorage.getItem('produtos')) || [];
+            const productList = document.getElementById('productList');
+            productList.innerHTML = ''; // Limpa a lista
+
+            produtos.forEach(product => {
+                const listItem = document.createElement('li');
+                listItem.classList.add('list-group-item');
+                listItem.textContent = `Nome: ${product.productName} | Email: ${product.preco}`;
+                productList.appendChild(listItem);
+            });
+        }
+
+        // Carrega a lista de usuários ao iniciar
+        loadProducts();
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta productName="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Cadastro de Produto</h2>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="registerProdutoName">Nome do Produto</label>
+                <input type="text" class="form-control" id="registerProdutoName" required>
+            </div>
+            <div class="form-group">
+                <label for="registerEmail">Preço</label>
+                <input type="number" class="form-control" id="registerEmail" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Cadastrar Produto</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const productName = document.getElementById('registerProdutoName').value;
+            const preco = document.getElementById('registerEmail').value;
+
+            const produtos = JSON.parse(localStorage.getItem('produtos')) || [];
+            produtos.push({ productName, preco});
+            localStorage.setItem('produtos', JSON.stringify(produtos));
+
+            alert('Usuário cadastrado com sucesso!');
+            window.location.href = 'listarProduto.html';
+        });
+    </script>
+</body>
+</html>

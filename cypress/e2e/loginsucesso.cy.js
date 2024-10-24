@@ -12,7 +12,7 @@ function gerarStringAleatoria(tamanho) {
 
 describe('template spec', () => {
   it('passes', () => {
-    cy.visit('http://127.0.0.1:5500/cadastro.html')
+    cy.visit('http://127.0.0.1:8080/cadastro.html')
     const nome = gerarStringAleatoria(4);
     const email = `${nome}@fiap.com.br`
     const senha = gerarStringAleatoria(4)
@@ -21,7 +21,7 @@ describe('template spec', () => {
     cy.get('#registerPassword').type(senha)
     cy.get('.btn').click()
 
-    cy.visit('http://127.0.0.1:5500/login.html')
+    cy.visit('http://127.0.0.1:8080/login.html')
     cy.get('#loginEmail').type(email)
     cy.get('#loginPassword').type(senha)
     cy.get('.btn').click()
